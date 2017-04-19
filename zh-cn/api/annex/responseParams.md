@@ -22,7 +22,7 @@ biz\_response.data.total_amount  | 有效交易总金额 |整数，以 <font col
 biz\_response.data.net\_amount  | 如果没有退款，这个字段等于total_amount。否则等于total\_amount减去退款金额 |整数，以分为单位 |业务执行 **成功** 才返回
 biz\_response.data.payway  | 支付方式 |见附录《支付方式列表》 |业务执行 **成功**才返回。包括支付宝，微信，京东，百度钱包等，未来会不断增加
 biz\_response.data.sub_payway  | 二级支付方式 |见附录《二级支付方式列表》 |业务执行 **成功**才返回
-biz\_response.data.finish_time  | 本次业务操作在收钱吧系统中执行完成的时间 |时间戳 |业务执行 **成功**才返回
+biz\_response.data.finish_time  | 本次业务操作在合码云系统中执行完成的时间 |时间戳 |业务执行 **成功**才返回
 biz\_response.data.channel\_finish_time  | 本次业务操作在第三方支付通道执行完成的时间 |时间戳|业务执行 **成功**才返回
 biz\_response.data.terminal_sn  | 发起本次业务请求的终端ID |字符串| 业务执行 **成功**才返回
 biz\_response.data.store_id  | 本次交易所属门店 |字符串 |业务执行 **成功**才返回
