@@ -83,7 +83,7 @@ biz_response.data.order_status
 <font color="green">CANCEL_INPROGRESS</font>  | <font color="red">撤单进行中</font>
 <font color="green">INVALID_STATUS_CODE</font> |<font color="red">无效的状态码</font>
 
-**开发者根据返回的biz_response.data.order_status属性判断当前收钱吧订单的状态。**
+**开发者根据返回的biz_response.data.order_status属性判断当前合码云订单的状态。**
 
 ### 哪些状态是订单最终状态
 - PAID

@@ -2,9 +2,9 @@
 
 ## 请求域名
 
-   收钱吧接入域名(api_domain)：`https://api.shouqianba.com`
+   合码云接入域名(api_domain)：`https://api.hemayun.com`
    
-   <font color="red">**注：收钱吧的Web API接口是https协议，当发起请求时，会要求检查证书，在发起请求时规避ssl的证书检查或者
+   <font color="red">**注：合码云的Web API接口是https协议，当发起请求时，会要求检查证书，在发起请求时规避ssl的证书检查或者
   携带证书请求**</font>
     
 ## 需要参与签名的接口及参数
