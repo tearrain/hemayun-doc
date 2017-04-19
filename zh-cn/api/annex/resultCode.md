@@ -33,7 +33,7 @@ ERROR: 本次业务执行结果未知
 <font color="blue">PRECREATE_FAIL</font>	|预下单操作失败	
 <font color="blue">PRECREATE\_FAIL_ERROR</font> |预下单状态失败并且不确定第三方支付通道状态|联系客服
 <font color="blue">PRECREATE_FAIL_IN_PROGRESS</font> |预下单状态失败并且不清楚状态|联系客服
-<font color="red">SUCCESS|	操作成功,**开发者根据返回的biz_response.data.order_status属性判断当前收钱吧订单的状态。**
+<font color="red">SUCCESS|	操作成功,**开发者根据返回的biz_response.data.order_status属性判断当前合码云订单的状态。**
 <font color="red">FAIL	|操作失败（不会触发流程）
 
 # 订单状态列表
@@ -54,7 +54,7 @@ biz_response.data.order_status
 <font color="green">CANCEL_INPROGRESS</font>  | <font color="red">撤单进行中</font>
 <font color="green">INVALID_STATUS_CODE</font> |<font color="red">无效的状态码</font>
 
-**开发者根据返回的biz_response.data.order_status属性判断当前收钱吧订单的状态。**
+**开发者根据返回的biz_response.data.order_status属性判断当前合码云订单的状态。**
 
 # 哪些状态是订单最终状态
 - PAID
@@ -68,9 +68,9 @@ biz_response.data.order_status
 
 取值 |含义 | 处理逻辑 
 --------- | ------ | -----  
-SUCCESS	|业务执行确认成功（即收钱吧后台和消费者端均成功）|银货两讫（无论是交货还是退货）
-FAIL_CANCELED	|确认失败（即收钱吧后台和消费者端均失败）|银货两讫，（不交货或是不退货）
-FAIL\_PROTOCOL_1|	协议错误| 小概率事件，失败但不确认消费者端状态<br>（即收钱吧后台强制认为是失败，但不确认消费者端是否同步失败）<br>（如果是收款，则不交货，但立即联系收钱吧客服，<br>（即算是消费者显示成功付款；<br>（如果是退货，则马上把货品回收，<br>（同时立即联系收钱吧客服，由收钱吧客服负责将钱款退回。
+SUCCESS	|业务执行确认成功（即合码云后台和消费者端均成功）|银货两讫（无论是交货还是退货）
+FAIL_CANCELED	|确认失败（即合码云后台和消费者端均失败）|银货两讫，（不交货或是不退货）
+FAIL\_PROTOCOL_1|	协议错误| 小概率事件，失败但不确认消费者端状态<br>（即收钱吧后台强制认为是失败，但不确认消费者端是否同步失败）<br>（如果是收款，则不交货，但立即联系合码云客服，<br>（即算是消费者显示成功付款；<br>（如果是退货，则马上把货品回收，<br>（同时立即联系收钱吧客服，由合码云客服负责将钱款退回。
 FAIL\_IO_1	|IO错误|	同上
 FAIL\_PROTOCOL_2|	协议错误|同上	
 FAIL\_IO_2	|IO错误|	同上
@@ -80,7 +80,7 @@ CANCEL_ERROR	|撤单流程调用支付通道的撤单接口通信成功，但是
 REFUND_ERROR	|退款流程调用支付通道的退款接口通信成功，但是返回的结果为退款失败。|同上
 
 * 备注：当系统返回状态为 失败但不确认消费者端状态的时候，
-一定要明确这笔订单是失败的，收钱吧会最终负责将这笔交易撤销。
+一定要明确这笔订单是失败的，合码云会最终负责将这笔交易撤销。
 不能交货或者退货，请立即进行人工介入，联系客服人员，以防遭受损失。
 
 
