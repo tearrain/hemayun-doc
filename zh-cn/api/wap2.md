@@ -14,7 +14,7 @@
 
 ## 网关地址
 
-[https://qr.hemayun.com/qr/gateway]
+https://qr.hemayun.com/qr/gateway
 
 ## 请求方式
 
@@ -139,7 +139,7 @@ GET
 
 ## 注：
 
-需要使用微信浏览器，使用302跳转的方式访问[https://m.wosai.cn/qr/gateway](https://qr.hemayun.com/qr/gateway)  
+需要使用微信浏览器，使用302跳转的方式访问https://qr.hemayun.com/qr/gateway  
   示例：
 
 ```
