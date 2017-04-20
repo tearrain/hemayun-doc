@@ -14,9 +14,9 @@
 
 ## SDK下载
 
-* Windows：[下载最新版的SDK](http://shouqianba-sdk.oss-cn-hangzhou.aliyuncs.com/SQB-Windows-SDK.zip)
-* Android：[下载最新版的SDK](http://shouqianba-sdk.oss-cn-hangzhou.aliyuncs.com/SQB-Android-SDK.zip)
-* iOS：[下载最新版的SDK](http://shouqianba-sdk.oss-cn-hangzhou.aliyuncs.com/SQB-IOS-SDK.zip)
+* Windows：[下载最新版的SDK](http://shouqianba-sdk.oss-cn-hangzhou.aliyuncs.com/HMY-Windows-SDK.zip)
+* Android：[下载最新版的SDK](http://shouqianba-sdk.oss-cn-hangzhou.aliyuncs.com/HMY-Android-SDK.zip)
+* iOS：[下载最新版的SDK](http://shouqianba-sdk.oss-cn-hangzhou.aliyuncs.com/HMY-IOS-SDK.zip)
 
 ## Windows SDK调用Demo程序代码
 
