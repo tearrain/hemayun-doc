@@ -1,12 +1,12 @@
-#Android SDK开发接入
+# Android SDK开发接入
 
-##1.SDK简介
+## 1.SDK简介
 
-###1.1 前言
-  收钱吧 Android SDK集成了各种支付方式,第三方通过调用本 SDK,可以轻松将支付宝,微 信,百度钱包,京东钱包支付等多种支付方式集成到自己的应用。
+### 1.1 前言
+  合码云 Android SDK集成了各种支付方式,第三方通过调用本 SDK,可以轻松将支付宝,微 信,百度钱包,京东钱包支付等多种支付方式集成到自己的应用。
 
 
-###1.2 主要功能
+### 1.2 主要功能
 
 * 激活:  新的终端使用 SDK,需要先激活终端,才可以进行交易 
 * 付款:  支持支付宝、微信、百度钱包、京东钱包支付 
@@ -16,21 +16,21 @@
 * 预下单: 支持支付宝、微信、百度钱包、京东钱包支付
 
 
-###1.3 框架设计
+### 1.3 框架设计
 
-第三方用户通过集成收钱吧 SDK,面对前方商户提供多种可选的支付方式,同时喔噻可以将交易 路由至支付宝,微信等服务器。
+第三方用户通过集成合码云 SDK,面对前方商户提供多种可选的支付方式,同时喔噻可以将交易 路由至支付宝,微信等服务器。
 
-###1.4 工作模式
-####1.4.1、SDK 标准界面模式
+### 1.4 工作模式
+#### 1.4.1、SDK 标准界面模式
 SDK 默认的工作模式,激活、付款、退款、撤单、预下单集成了 UI 界面,不需要特别配置。 
 
-####1.4.2、SDK 无界面标准模式
+#### 1.4.2、SDK 无界面标准模式
 
 SDK 无界面的工作模式,在调用接口时,需要在 UpayOrder 订单参数中指定调用模式为
 *<font color="red">setPayModel(UpayOrder.PayModel.NO_UI)。</font>*
 
 ##2.开发指南
-[下载最新版的SDK](http://shouqianba-sdk.oss-cn-hangzhou.aliyuncs.com/SQB-Android-SDK.zip)。为保证您的财产和数据安全，请勿使用从其他非收钱吧渠道获取的SDK。对由于使用了非官方SDK而导致的任何物质或非物质损失，收钱吧概不负责。
+[下载最新版的SDK](http://shouqianba-sdk.oss-cn-hangzhou.aliyuncs.com/HMY-Android-SDK.zip)。为保证您的财产和数据安全，请勿使用从其他非h合码云渠道获取的SDK。对由于使用了非官方SDK而导致的任何物质或非物质损失，收钱吧概不负责。
 
 ##3.集成步骤
 ###3.1 Eclipse下集成SDK
@@ -124,7 +124,7 @@ repositories {
 	}
 }
 dependencies {
-	compile(name: 'SQB-Android-SDK-2.1.0', ext: 'aar'))//name 后面紧跟的为引入的 aar 包名 
+	compile(name: 'HMY-Android-SDK-2.1.0', ext: 'aar'))//name 后面紧跟的为引入的 aar 包名 
 }
 ```
 ####3.2.4、初始化 SDK,在程序入口处初始化 SDK,如果初始化提示 AndroidManifest.xml 文件配置 有误,请检查配置文件;
@@ -249,7 +249,7 @@ public void setVerticalScreen(boolean verticalScreen)
 
 属性 |属性名称 |类型 |描述 |付款 |退款 |预下单 |查询 |撤单  
 --------- | ----| ----| ----| ----| ----| ----| ----| ----
-sn | 收钱吧系统订单号| String| 收钱吧系统内部唯一订单号| ——| **无UI**(sn和client_sn<font color="red">不能同时为空</font>)<br>**有UI**(sn 和 client_sn 非必传)| ——| sn和client_sn不能同时为空|**无UI**(sn和client_sn<font color="red">不能同时为空</font>)<br>**有UI**(sn和client_sn非必传)
+sn | 合码云系统订单号| String| 合码云系统内部唯一订单号| ——| **无UI**(sn和client_sn<font color="red">不能同时为空</font>)<br>**有UI**(sn 和 client_sn 非必传)| ——| sn和client_sn不能同时为空|**无UI**(sn和client_sn<font color="red">不能同时为空</font>)<br>**有UI**(sn和client_sn非必传)
 client_sn|商户系统订单号|String|必须在商户系统内唯一;且长度不超过32字节|必传|同上|必传|同上|同上
 total_amount|交易总金额|Stirng|以分为单位,不超过10位纯数字字符串,超过1亿元的收款请 使用银行转账|必传|——|必传|——|——
 payway|支付方式|String|纯数字字符串, 一旦设置,则根据支付码判断支付通道的逻辑失效。|非必传|——|必传|——|——
@@ -257,20 +257,20 @@ dynamic_id|付款码内容|String|不超过32字节|无UI必传|——|——|�
 subject|交易简介|String|本次交易的简要介绍|必传|——|必传|——|——
 operator|门店操作员|String|发起本次交易的操作员|必传|必传|必传|——|——
 description|商品详情|String|对商品或本次交易的描述|非必传|——|非必传|——|——
-extended|扩展那参数集合|String|收钱吧与特定第三方单独约定的参数集合, **json** 格式,最多支持24个字段,每个字段key长度不超过64字节,value长度不超过256字节|非必传|——|非必传|——|——
+extended|扩展那参数集合|String|合码云与特定第三方单独约定的参数集合, **json** 格式,最多支持24个字段,每个字段key长度不超过64字节,value长度不超过256字节|非必传|——|非必传|——|——
 reflect|反射参数|String|任何调用者希望原样返回的信息|非必传|非必传|非必传|－－|非必传
 refund_request_no|退款序列号|String|商户退款所需序列号，防止重复退款|——|必传|——|——|——
 refund_amount|退款金额|String|退款金额|——|无UI必传|——|——|——
 payModel|支付模式|PayModel(enum)|默认有界面模式|非必传|——|非必传|——|——
-refundModel|退款模式|RefundModel(enum)|有界面退款模式，通过商户订单号或者收钱吧订单号|——|有UI必传|——|——|——
-revokeModel|退款模式|RefundModel(enum)|有节目模式，通过商户订单号或者收钱吧订单号|——|——|——|——|有UI必传
+refundModel|退款模式|RefundModel(enum)|有界面退款模式，通过商户订单号或者合码云订单号|——|有UI必传|——|——|——
+revokeModel|退款模式|RefundModel(enum)|有节目模式，通过商户订单号或者合码云订单号|——|——|——|——|有UI必传
 
 
 
 ###4.3 UpayResult类说明
 属性|属性名称|描述
 ----|----|----
-sn|收钱吧订单号|收钱吧系统内部唯一订单号
+sn|合码云订单号|合码云系统内部唯一订单号
 client_sn|商户订单号|商户系统订单号
 trade_no|支付服务商订单号|支付通道交易凭证号
 status|流水状态|本次操作产生的流水的状态
@@ -282,7 +282,7 @@ payer_login|付款人账号|支付平台上(微信,支付宝)的付款人账号
 total_amount|交易总额|本次交易总金额
 net_amount|实收金额|如果没有退款,这个字段等于 total_amount。否则等于 total_amount 减去退款金额
 subject|交易概述|本次交易概述
-finish_time|付款动作在收钱吧的完成时间|时间戳
+finish_time|付款动作在合码云的完成时间|时间戳
 channel_finish_time|付款动作在支付服务商的完成时间|时间戳
 operator|操作员|门店操作员
 description|商品详情|对商品或本次交易的描述
@@ -379,7 +379,7 @@ UpayTask.getInstance().pay(order, new UpayCallBack() {
 
 ```java
 UpayOrder order = new UpayOrder();
-order.setSn("7894259244086017");//收钱吧订单号
+order.setSn("7894259244086017");//合码云订单号
 order.setClient_sn("client1241241");//商户订单号 
 order.setRefund_request_no("23524241");//退款序列号
 order.setOperator("操作员 007");//操作员
@@ -399,7 +399,7 @@ UpayTask.getInstance().refund(order, new UpayCallBack() {
 
 ```java
 UpayOrder order = new UpayOrder(); 
-order.setSn("7894259244086017");//收钱吧订单号 
+order.setSn("7894259244086017");//合码云订单号 
 order.setClient_sn("client1241241");//商户订单号 
 order.setReflect("测试反射参数");//反射参数
 order.setRevokeModel(UpayOrder.RevokeModel.CLIENT_SN);//指定退款模式为商户订单号退款
@@ -475,7 +475,7 @@ UpayTask.getInstance().pay(order, new UpayCallBack() {
 
 ```java
 UpayOrder order = new UpayOrder(); 
-order.setSn("7894259244086017");//收钱吧订单号 
+order.setSn("7894259244086017");//合码云订单号 
 order.setClient_sn("client1241241");//商户订单号 
 order.setRefund_request_no("23524241");//退款序列号 
 order.setOperator("操作员 007");//操作员 
@@ -494,7 +494,7 @@ UpayTask.getInstance().refund(order, new UpayCallBack() {
 
 ```java
 UpayOrder order = new UpayOrder(); 
-order.setSn("7894259244086017");//收钱吧订单号 
+order.setSn("7894259244086017");//合码云订单号 
 order.setClient_sn("client1241241");//商户订单号 
 
 UpayTask.getInstance().query(order, new UpayCallBack() {
@@ -508,7 +508,7 @@ UpayTask.getInstance().query(order, new UpayCallBack() {
 
 ```java
 UpayOrder order = new UpayOrder(); 
-order.setSn("7894259244086017");//收钱吧订单号 
+order.setSn("7894259244086017");//合码云订单号 
 order.setClient_sn("client1241241");//商户订单号 
 order.setReflect("测试反射参数");//反射参数 
 order.setPayModel(UpayOrder.PayModel.NO_UI);//指定 SDK 启动模式为无界面模式 
