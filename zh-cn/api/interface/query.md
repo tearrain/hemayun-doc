@@ -6,14 +6,14 @@
 
 ## 签名验证
 
-   请参考[签名机制文档](https://wosai.gitbooks.io/shouqianba-doc/content/zh-cn/api/sign.html)
+   请参考[签名机制文档](https://wosai.gitbooks.io/hemayun-doc/content/zh-cn/api/sign.html)
    
 ## 请求参数说明
 
 参数 | 参数名称 | 类型 | 必填|描述 |范例
 --------- | ------ | ----- | -------|---|----
-terminal_sn|	收钱吧终端ID	|String(32)|Y|收钱吧终端ID| "010382829292929"
-sn	|收钱吧系统订单号|	String(16)|N|收钱吧系统唯一订单号| "7894259244061958"
+terminal_sn|	合码云终端ID	|String(32)|Y|合码云终端ID| "010382829292929"
+sn	|合码云系统订单号|	String(16)|N|合码云系统唯一订单号| "7894259244061958"
 client_sn|	商户自己的订单号	|String(64)|N|商户自己订号|"2324545839"
 
 <p style="color:red; font-weight: bold;">sn与client_sn不能同时为空，优先按照sn查找订单，如果没有，再按照client_sn查询</p>
