@@ -60,11 +60,11 @@ pay接口返回：biz_response.result_code是指一个动作的状态。biz_resp
 precreate接口何时发起轮询：
 
 ```
-Web API接入：在得到预下单成功的结果后，即可向收钱吧服务器发起轮询请求。
+Web API接入：在得到预下单成功的结果后，即可向合码云服务器发起轮询请求。
 
     预下单成功:biz_response.result_code="PRECREATE_SUCCESS" or biz_response.data.order_status="CREATED")
 
-    收钱吧目前所有预下单的订单有效支付时长约为4分钟，若超时仍未支付，收钱吧会自动取消该订单；因此轮询时间请控制在240秒左右。
+    合码云目前所有预下单的订单有效支付时长约为4分钟，若超时仍未支付，合码云会自动取消该订单；因此轮询时间请控制在240秒左右。
 
     轮询的间隔建议为前30秒内2秒一次，之后5秒一次。
 ```
