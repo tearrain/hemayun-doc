@@ -4,12 +4,12 @@
 
         {api_domain}/upay/v2/precreate
 ## 签名验证
-  请见[签名机制文档](https://wosai.gitbooks.io/shouqianba-doc/content/zh-cn/api/sign.html)
+  请见[签名机制文档](https://wosai.gitbooks.io/hemayun-doc/content/zh-cn/api/sign.html)
 ## 请求参数说明
 
 参数 | 参数名称 | 类型 | 必填 | 描述 | 范例
 --------- | ------ | ----- | ------- | --- | ----
-terminal_sn | 收钱吧终端ID| String(32)| Y	 | 收钱吧终端ID | "23420593829"
+terminal_sn | 合码云终端ID| String(32)| Y	 | 合码云终端ID | "23420593829"
 client_sn | 商户系统订单号 | String(32)| Y | 必须在商户系统内唯一；且长度不超过32字节 | "18348290098298292838"
 total_amount | 交易总金额 | String(10) | Y | 以分为单位,不超过10位纯数字字符串,超过1亿元的收款请使用银行转账 | "1000"
 payway	|支付方式|	String|	Y	|内容为数字的字符串 |1:支付宝<br/>3:微信<br/>4:百度钱包<br/>5:京东钱包<br/>6:qq钱包
