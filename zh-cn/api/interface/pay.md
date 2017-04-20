@@ -6,13 +6,13 @@
 	    
 ## 签名验证
 
-  请参考[签名机制文档](https://wosai.gitbooks.io/shouqianba-doc/content/zh-cn/api/sign.html)
+  请参考[签名机制文档](https://wosai.gitbooks.io/hemayun-doc/content/zh-cn/api/sign.html)
   
 ## 请求参数说明
 
 参数 | 参数名称 | 类型 | 必填|描述 |范例
 --------- | ------ | ----- | -------|---|----
-terminal_sn | 收钱吧终端ID |String(32)|Y|收钱吧终端ID，不超过32位的纯数字|"00101010029201012912"
+terminal_sn | 合码云终端ID |String(32)|Y|收钱吧终端ID，不超过32位的纯数字|"00101010029201012912"
 client_sn |商户系统订单号  | String(32)|Y | 必须在商户系统内唯一；且长度不超过32字节|"18348290098298292838"
 total_amount | 交易总金额 |String(10) |Y |以分为单位,不超过10位纯数字字符串,超过1亿元的收款请使用银行转账 |"1000"
 payway | 支付方式 |String |N |非必传。内容为数字的字符串。一旦设置，则根据支付码判断支付通道的逻辑失效 |1:支付宝<br/>3:微信<br/>4:百度钱包<br/>5:京东钱包<br/>6:qq钱包
@@ -23,7 +23,7 @@ description | 商品详情 |String(256) |N |对商品或本次交易的描述 |
 longitude | 经度 | String| N|经纬度必须同时出现 | "121.615459404"
 latitude | 维度 | String|N |经纬度必须同时出现 | "31.4056441552"
 device_id|设备指纹|String|N|
-extended | 扩展参数集合 | JSON map | N | 收钱吧与特定第三方单独约定的参数集合,json格式，最多支持24个字段，每个字段key长度不超过64字节，value长度不超过256字节 | { "goods_tag": "beijing"}
+extended | 扩展参数集合 | JSON map | N | 合码云与特定第三方单独约定的参数集合,json格式，最多支持24个字段，每个字段key长度不超过64字节，value长度不超过256字节 | { "goods_tag": "beijing"}
 reflect | 反射参数 | String(64) | N | 任何调用者希望原样返回的信息，可以用于关联商户ERP系统的订单或记录附加订单内容 | { "tips": "200" }
 notify_url|回调|String(128)|N| 支付回调的地址|例如：www.baidu.com 如果支付成功通知时间间隔为1s,5s,30s,600s 
 
@@ -36,8 +36,8 @@ notify_url|回调|String(128)|N| 支付回调的地址|例如：www.baidu.com �
 result\_code | 结果码 | String | Y | 结果码表示接口调用的业务逻辑是否成功 | "PAY_SUCCESS"
 error\_code | 错误码 | String | N | 参考附录：业务执行错误码列表 |"INVALID_BARCODE"
 error\_message | 错误消息 | String | N | 参考附录：业务执行错误码列表 |"不合法的支付条码"
-terminal_sn	|终端号|	String(32)|Y|收钱吧终端ID|"01939202039923029"
-sn|	收钱吧唯一订单号|	String(16)|Y|收钱吧系统内部唯一订单号|"7892259488292938"
+terminal_sn	|终端号|	String(32)|Y|合码云终端ID|"01939202039923029"
+sn|	合码云唯一订单号|	String(16)|Y|合码云系统内部唯一订单号|"7892259488292938"
 client_sn|商户订单号|	String(32)|Y|商户系统订单号|"7654321132"
 trade_no|支付服务商订单号|String(64)|Y|支付通道交易凭证号|"2013112011001004330000121536"
 status|流水状态|String(32)|	Y|本次操作产生的流水的状态| "SUCCESS"
@@ -49,7 +49,7 @@ payer_login|付款人账号|String(128)|N|支付平台上(微信，支付宝)的
 total_amount|交易总额	|String(10)|Y|本次交易总金额|"10000"
 net\_amount|实收金额|String(10)|Y|如果没有退款，这个字段等于total\_amount。否则等于 total_amount减去退款金额|"0"
 subject|	交易概述|	String(64)|	Y|本次交易概述|"Pizza"
-finish_time	|付款动作在收钱吧的完成时间|String(13)|Y|时间戳|"1449646835244"
+finish_time	|付款动作在合码云的完成时间|String(13)|Y|时间戳|"1449646835244"
 channel\_finish_time|付款动作在支付服务商的完成时间|String(13)|Y|时间戳|"1449646835244"
 operator	|操作员	|String(32)	|Y	|门店操作员	|"张三丰"
 reflect	|反射参数|	String(64)	|N|	透传参数	| {"tips": "200"}
@@ -58,8 +58,8 @@ reflect	|反射参数|	String(64)	|N|	透传参数	| {"tips": "200"}
 
 参数 | 参数名称 | 类型 | 必填|描述 |范例
 --------- | ------ | ----- | -------|---|----
-terminal_sn	|终端号|	String(32)|Y|收钱吧终端ID|"01939202039923029"
-sn|	收钱吧唯一订单号|	String(16)|Y|收钱吧系统内部唯一订单号|"7892259488292938"
+terminal_sn	|终端号|	String(32)|Y|合码云终端ID|"01939202039923029"
+sn|	合码云唯一订单号|	String(16)|Y|合码云系统内部唯一订单号|"7892259488292938"
 client_sn|商户订单号|	String(32)|Y|商户系统订单号|"7654321132"
 trade_no|支付服务商订单号|String(64)|Y|支付通道交易凭证号|"2013112011001004330000121536"
 status|流水状态|String(32)|	Y|本次操作产生的流水的状态| "SUCCESS"
@@ -71,7 +71,7 @@ payer_login|付款人账号|String(128)|N|支付平台上(微信，支付宝)的
 total_amount|交易总额	|String(10)|Y|本次交易总金额|"10000"
 net\_amount|实收金额|String(10)|Y|如果没有退款，这个字段等于total\_amount。否则等于 total_amount减去退款金额|"0"
 subject|	交易概述|	String(64)|	Y|本次交易概述|"Pizza"
-finish_time	|付款动作在收钱吧的完成时间|String(13)|Y|时间戳|"1449646835244"
+finish_time	|付款动作在合码云的完成时间|String(13)|Y|时间戳|"1449646835244"
 channel\_finish_time|付款动作在支付服务商的完成时间|String(13)|Y|时间戳|"1449646835244"
 operator	|操作员	|String(32)	|Y	|门店操作员	|"张三丰"
 reflect	|反射参数|	String(64)	|N|	透传参数	| {"tips": "200"}
