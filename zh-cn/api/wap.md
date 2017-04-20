@@ -18,15 +18,15 @@
 
 1. 用户访问商户的移动端支付页面，触发支付控件（如点击支付按钮）。
 2. 支付页面的前端逻辑验证支付参数后，向商户的后端服务器发起创建订单请求。
-3. 商户后端服务器收到请求后再次验证请求参数，向收钱吧服务器发起预下单请求。
-4. 收钱吧服务器确认请求有效后，向指定的支付渠道发起预下单交易流程。
+3. 商户后端服务器收到请求后再次验证请求参数，向合码云服务器发起预下单请求。
+4. 合码云服务器确认请求有效后，向指定的支付渠道发起预下单交易流程。
 5. 支付渠道同步返回预下单结果。
-6. 收钱吧服务器将订单信息和预下单结果返回给商户后端服务器。
-7. 商户后端服务器将预下单结果返回给自己的前端页面（其中包含唤起支付客户端支付控件所需的支付参数<span style="color:red; font-weight: bold;">biz_response.data.wap_pay_request</span>）。与此同时，商户后端服务器开始轮询收钱吧服务器该订单的支付状态。<span style="color:red; font-weight: bold;">*</span>
+6. 合码云服务器将订单信息和预下单结果返回给商户后端服务器。
+7. 商户后端服务器将预下单结果返回给自己的前端页面（其中包含唤起支付客户端支付控件所需的支付参数<span style="color:red; font-weight: bold;">biz_response.data.wap_pay_request</span>）。与此同时，商户后端服务器开始轮询合码云服务器该订单的支付状态。<span style="color:red; font-weight: bold;">*</span>
 8. 商户前端页面利用返回结果中的支付参数（<span style="color:red; font-weight: bold;">biz_response.data.wap_pay_request</span>）唤起客户端支付控件。<span style="color:red; font-weight: bold;">**</span>
 9. 用户输入密码，确认支付。
 10. 商户前端页面收到客户端前端Javascript SDK的回调，开始展示支付进行中的页面。与此同时，前端页面向商户后端服务器发起查询请求（建议使用长连接），等待最终支付结果的返回。
-11. 商户后端服务器收到前端页面的查询请求，则保持该连接直至从收钱吧服务器查询到最终支付结果。
+11. 商户后端服务器收到前端页面的查询请求，则保持该连接直至从合码云服务器查询到最终支付结果。
 12. 商户后端服务器返回最终支付结果，前端页面展示支付成功页面和订单信息。
 
 <span style="color:red; font-weight: bold;">*</span>：wap_pay_request参数说明
@@ -57,7 +57,7 @@
 
 #### 3.1.2 请求参数
 
-具体请参考收钱吧支付网关[预下单接口文档](https://wosai.gitbooks.io/shouqianba-doc/content/zh-cn/api/interface/precreate.html)
+具体请参考合码云支付网关[预下单接口文档](https://wosai.gitbooks.io/hemayun-doc/content/zh-cn/api/interface/precreate.html)
 
 #### 3.1.3 特别说明
 
@@ -72,12 +72,12 @@
 
 #### 3.2.2 请求参数
 
-具体请参考收钱吧支付网关[查询接口文档](https://wosai.gitbooks.io/shouqianba-doc/content/zh-cn/api/interface/query.html)
+具体请参考合码云支付网关[查询接口文档](https://wosai.gitbooks.io/hemayun-doc/content/zh-cn/api/interface/query.html)
 
 #### 3.2.3 特别说明
 
-- 商户后端服务器在得到预下单成功的结果后，即可向收钱吧服务器发起轮询请求。
-- 收钱吧目前所有预下单的订单有效支付时长约为90秒，若超时仍未支付，收钱吧会自动取消该订单；因此轮询时间请控制在**100-120秒**左右。
+- 商户后端服务器在得到预下单成功的结果后，即可向合码云服务器发起轮询请求。
+- 合码云目前所有预下单的订单有效支付时长约为90秒，若超时仍未支付，合码云会自动取消该订单；因此轮询时间请控制在**100-120秒**左右。
 - 轮询的间隔建议为**前30秒内2秒一次，之后5秒一次**（注：如果使用回掉，则轮询间隔可以扩大）。
 
 
@@ -95,26 +95,3 @@
 
 	--将商户页面转换成二维码，贴在门店里，消费者扫描二维码后在各种钱包浏览器中打开页面后，输入金额并完成支付
 
-## 5. 版本记录
-
-<table>
-    <thead style="font-weight: bold;">
-        <tr>
-            <td>版本</td>
-            <td style="min-width:110px">日期</td>
-            <td>说明</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>0.1.0</td>
-            <td>2016年03月08日</td>
-            <td>提交审阅</td>
-        </tr>
-        <tr>
-            <td>1.0.0</td>
-            <td>2016年03月09日</td>
-            <td>正式发布</td>
-        </tr>
-    </tbody>
-</table>
