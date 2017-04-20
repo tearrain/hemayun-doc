@@ -9,7 +9,7 @@
 
 ## 2. 业务流程
 
-![image](http://images.wosaimg.com/88/05f978ea0bb0a3c719aebc735764aa5bf478aa.png "收钱吧WAP支付流程")
+![image](http://images.wosaimg.com/88/05f978ea0bb0a3c719aebc735764aa5bf478aa.png "合码云WAP支付流程")
 
 ## 3. WAP接入须知
 在对接WAP接口前，请联系收钱吧销售人员填写服务商入网申请资料和测试商户入网资料。入网资料中填写的支付渠道相关参数必须与开发者使用的支付渠道相关参数保持一致。
