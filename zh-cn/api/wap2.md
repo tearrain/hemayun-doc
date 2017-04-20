@@ -111,7 +111,7 @@ GET
 | get\_brand\_wcpay\_request:fail | get\_brand\_wcpay\_request:fail | 支付失败 |
 | get\_brand\_wcpay\_request:cancel | get\_brand\_wcpay\_request:cancel | 用户取消支付 |
 
-**商户务必以查单或者服务器异步通知的订单结果为主作出正确的处理。return\_url的结果仅供参考。查询订单请使用轮询方式获取为主，具体的轮询方式请使用web api接口里**[**查询接口**](https://wosai.gitbooks.io/shouqianba-doc/content/zh-cn/api/interface/query.html)**，轮询的时间控制在100-120s之间，轮询的间隔建议为前30秒内2秒一次，之后5秒一次**
+**商户务必以查单或者服务器异步通知的订单结果为主作出正确的处理。return\_url的结果仅供参考。查询订单请使用轮询方式获取为主，具体的轮询方式请使用web api接口里查询接口，轮询的时间控制在100-120s之间，轮询的间隔建议为前30秒内2秒一次，之后5秒一次**
 
 说明：一般除 get\_brand\_wcpay\_request:ok 外皆认为支付失败，无需细分处理。
 
