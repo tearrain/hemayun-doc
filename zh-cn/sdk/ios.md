@@ -20,7 +20,7 @@
 
 ### 1.1 获取最新版SDK
 
-[下载最新版的SDK](https://shouqianba-sdk.oss-cn-hangzhou.aliyuncs.com/upay_sdk_ios_3.1.3.zip)
+[下载最新版的SDK](https://shouqianba-sdk.oss-cn-hangzhou.aliyuncs.com/hmy_sdk_ios_3.1.3.zip)
 
 *SHA-256 Digest: ead47a005d080a58816178133c39e18c787818c8b49752482b152b7c1c9dcb00*
 
@@ -161,7 +161,7 @@ SDK订单类，代表所需操作的订单对象。
             <td>extended</td>
             <td>NSDictionary</td>
             <td>strong, nonatomic</td>
-            <td>收钱吧与特定第三方单独约定的参数字典，最多支持24个字段，每个字段key长度不超过64字符，value长度不超过256字符，总长度不超过64字符</td>
+            <td>合码云与特定第三方单独约定的参数字典，最多支持24个字段，每个字段key长度不超过64字符，value长度不超过256字符，总长度不超过64字符</td>
         </tr>
         <tr>
             <td>reflect</td>
@@ -206,7 +206,7 @@ SDK激活信息类，代表包含激活设备所需信息的对象。
             <td>code</td>
             <td>NSString</td>
             <td>strong, nonatomic</td>
-            <td>由收钱吧提供的设备激活码，用于激活该设备作为收钱吧服务的终端</td>
+            <td>由合码云提供的设备激活码，用于激活该设备作为合码云服务的终端</td>
         </tr>
         <tr>
             <td>vendor_sn</td>
@@ -224,7 +224,7 @@ SDK激活信息类，代表包含激活设备所需信息的对象。
             <td>vendor_app_id</td>
             <td>NSString</td>
             <td>strong, nonatomic</td>
-            <td>服务商应用的ID，由服务商通过服务商平台（VSP）2.0创建</td>
+            <td>服务商应用的ID，由服务商通过服务商平台创建</td>
         </tr>
         <tr>
             <td>client_sn</td>
@@ -245,7 +245,7 @@ SDK激活信息类，代表包含激活设备所需信息的对象。
 
 ### 2.3 <a name="WSUpayTask"></a> WSUpayTask
 
-SDK任务。配置好任务后，调用相关方法，可对收钱吧的订单进行一系列操作。
+SDK任务。配置好任务后，调用相关方法，可对合码云的订单进行一系列操作。
 
 #### 2.3.1 <a name="WSUpayTaskProperties"></a> 属性成员
 
@@ -306,14 +306,14 @@ SDK任务。配置好任务后，调用相关方法，可对收钱吧的订单�
             <td>BOOL</td>
             <td>assign, nonatomic</td>
             <td>使用SDK标准界面模式进行退款时，是否将用户输入的交易单号作为商户订单号
-     （若为YES，退款时SDK将把用户输入的交易单号当作商户订单号；否则当作收钱吧订单号）</td>
+     （若为YES，退款时SDK将把用户输入的交易单号当作商户订单号；否则当作合码云订单号）</td>
         </tr>
         <tr>
             <td>revokeByClientSn</td>
             <td>BOOL</td>
             <td>assign, nonatomic</td>
             <td>使用SDK标准界面模式进行撤单时，是否将用户输入的交易单号作为商户订单号
-     （若为YES，撤单时SDK将把用户输入的交易单号当作商户订单号；否则当作收钱吧订单号）</td>
+     （若为YES，撤单时SDK将把用户输入的交易单号当作商户订单号；否则当作合码云订单号）</td>
         </tr>
     </tbody>
 </table>
@@ -416,7 +416,7 @@ SDK任务。配置好任务后，调用相关方法，可对收钱吧的订单�
 <table style="width: 100%;">
     <tr>
         <td><i>upayActivationInfo</i></td>
-        <td>收钱吧支付网关接收的激活信息对象</td>
+        <td>合码云支付网关接收的激活信息对象</td>
     </tr>
     <tr>
         <td><i>finish</i></td>
@@ -468,15 +468,15 @@ SDK任务。配置好任务后，调用相关方法，可对收钱吧的订单�
 <table style="width: 100%;">
     <tr>
         <td><i>code</i></td>
-        <td>由收钱吧提供的设备激活码，用于激活该设备作为收钱吧服务的终端</td>
+        <td>由合码云提供的设备激活码，用于激活该设备作为合码云服务的终端</td>
     </tr>
     <tr>
         <td><i>vendorId</i></td>
-        <td>收钱吧服务商ID，验证服务商身份的重要凭证，由开发者和服务商管理，请在应用内确保其安全性</td>
+        <td>合码云服务商ID，验证服务商身份的重要凭证，由开发者和服务商管理，请在应用内确保其安全性</td>
     </tr>
     <tr>
         <td><i>vendorKey</i></td>
-        <td>收钱吧服务商KEY，验证服务商身份的重要凭证，由开发者和服务商管理，请在应用内确保其安全性</td>
+        <td>合码云服务商KEY，验证服务商身份的重要凭证，由开发者和服务商管理，请在应用内确保其安全性</td>
     </tr>
     <tr>
         <td><i>finish</i></td>
@@ -496,7 +496,7 @@ SDK任务。配置好任务后，调用相关方法，可对收钱吧的订单�
 
     - (void)activate;
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;向收钱吧支付网关发送终端激活请求，35秒超时。若超时未收到响应，则返回激活失败。
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;向合码云支付网关发送终端激活请求，35秒超时。若超时未收到响应，则返回激活失败。
 
 ###### 参数
 
@@ -514,7 +514,7 @@ SDK任务。配置好任务后，调用相关方法，可对收钱吧的订单�
 
     - (void)pay;
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;向收钱吧服务器发起支付请求。若超时未收到响应，则发起查询。若规定时间内查询未果则自动冲正（撤单）。
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;向合码云服务器发起支付请求。若超时未收到响应，则发起查询。若规定时间内查询未果则自动冲正（撤单）。
 
 ###### 参数
 
@@ -532,7 +532,7 @@ SDK任务。配置好任务后，调用相关方法，可对收钱吧的订单�
 
     - (void)refund;
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;向收钱吧服务器发起退款请求。若超时未收到响应，则发起查询并返回查询结果。
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;向合码云服务器发起退款请求。若超时未收到响应，则发起查询并返回查询结果。
 
 ###### 参数
 
@@ -550,7 +550,7 @@ SDK任务。配置好任务后，调用相关方法，可对收钱吧的订单�
 
     - (void)query;
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;向收钱吧服务器发起查询订单请求
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;向合码云服务器发起查询订单请求
 
 ###### 参数
 
@@ -568,7 +568,7 @@ SDK任务。配置好任务后，调用相关方法，可对收钱吧的订单�
 
     - (void)preCreate;
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;向收钱吧支付网关发送预下单请求。首次回调返回二维码，二次回调返回支付结果。
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;向合码云支付网关发送预下单请求。首次回调返回二维码，二次回调返回支付结果。
 
 ###### 参数
 
@@ -586,7 +586,7 @@ SDK任务。配置好任务后，调用相关方法，可对收钱吧的订单�
 
     - (void)revoke;
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;向收钱吧支付网关发送撤单请求。若超时未收到响应，则发起查询并返回查询结果。
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;向合码云支付网关发送撤单请求。若超时未收到响应，则发起查询并返回查询结果。
 
 ###### 参数
 
@@ -622,7 +622,7 @@ SDK任务。配置好任务后，调用相关方法，可对收钱吧的订单�
 
     - (NSString *)terminalSerialNumber;
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;获取当前设备的（收钱吧）终端编号。
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;获取当前设备的（合码云）终端编号。
 
 ###### 参数
 
@@ -630,7 +630,7 @@ SDK任务。配置好任务后，调用相关方法，可对收钱吧的订单�
 
 ###### 返回值
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;若当前设备已激活，返回该设备的（收钱吧）终端编号；否则返回`nil`。
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;若当前设备已激活，返回该设备的（合码云）终端编号；否则返回`nil`。
 
 ###### 适用性
 
@@ -656,7 +656,7 @@ SDK交易结果类，包含操作完成后返回的订单信息和交易结果�
             <td>sn</td>
             <td>NSString</td>
             <td>strong, nonatomic</td>
-            <td>收钱吧系统内部唯一订单号，由数字组成，不超过16字符</td>
+            <td>合码云系统内部唯一订单号，由数字组成，不超过16字符</td>
         </tr>
         <tr>
             <td>client_sn</td>
@@ -722,7 +722,7 @@ SDK交易结果类，包含操作完成后返回的订单信息和交易结果�
             <td>finish_time</td>
             <td>double</td>
             <td>assign, nonatomic</td>
-            <td>上次操作在收钱吧服务器的完成时间，Unix时间戳，精确到毫秒</td>
+            <td>上次操作在合码云服务器的完成时间，Unix时间戳，精确到毫秒</td>
         </tr>
         <tr>
             <td>channel_finish_time</td>
@@ -877,7 +877,7 @@ SDK定义了名为WSUpaySubPayway的NS_ENUM，常量类型为NSInteger，方便�
         <tr>
             <td>WSUpayGeneralErrorCodeServerError</td>
             <td>-10500</td>
-            <td>收钱吧服务器端处理出现异常的错误代码</td>
+            <td>合码云服务器端处理出现异常的错误代码</td>
         </tr>
         <tr>
             <td>WSUpayGeneralErrorCodeTerminalError</td>
@@ -935,14 +935,14 @@ SDK定义了一组类型为NSString的Error Domains，方便开发者根据SDK�
         <tr>
             <td>WSUpayUnknownErrorDomain</td>
             <td>WSUpayUnknownErrorDomain</td>
-            <td>收钱吧SDK未知错误</td>
+            <td>合码云SDK未知错误</td>
         </tr>
     </tbody>
 </table>
 
 #### 2.9.2 <a name="WSOrderStatus"></a> 收钱吧订单状态
 
-SDK定义了一组类型为NSString的订单状态常量，方便开发者根据SDK返回的WSUpayResult中的`order_status`属性判断当前收钱吧订单的状态。
+SDK定义了一组类型为NSString的订单状态常量，方便开发者根据SDK返回的WSUpayResult中的`order_status`属性判断当前合码云订单的状态。
 
 <table>
     <thead style="font-weight: bold;">
@@ -1015,58 +1015,13 @@ SDK定义了一组类型为NSString的订单状态常量，方便开发者根据
 
 ## 3. <a name="tutorial"></a> 开发指引及示例
 
-### 3.1 [DEPRECATED] 旧版激活
-
-**从3.1.1开始，旧版激活接口仅支持无界面模式，不再支持标准界面模式。**~~激活操作提供了无界面和标准界面两种开发模式。当指定`needsUserInterface`为`YES`且`baseViewController`为当前的ViewController时，则启用标准界面模式；否则启用无界面模式。~~
-
-WSUpayTask实例的`activateTerminal`方法的`code`参数是由收钱吧提供的设备激活码，用于激活该设备作为收钱吧服务的终端。而`vendorId`和`vendorKey`是验证服务商身份的重要凭证，由开发者和服务商管理，请在应用内确保其安全性。`finish`参数是处理激活结果的block。当激活成功时，SDK会回调block并传入`nil`；激活失败时，SDK会回调block并传入包含错误信息的NSError实例。
-
-- 无界面模式下，激活方法的所有参数均为必选，若缺少`code`，`vendorId`或`vendorKey`，方法会回调并返回参数错误；若缺少`finish`，则不进行任何操作。
-- ~~标准界面模式下，激活方法忽略`code`参数，由输入控件的输入值作为激活码；`vendorId`或`vendorKey`为必填，否则进行激活时会回调并返回参数错误；若缺少`finish`，则不进行任何操作。~~
-
-#### 示例代码
-
-    #import "ViewController.h"
-    #import <WSUpayKit/WSUpayKit.h>
-    
-    @interface ViewController
-    
-    @property (strong, nonatomic) WSUpayTask *upayTask;
-
-    @end
-
-    @implementation ViewController
-    
-    /**
-     @brief 利用SDK激活该设备，以便进行交易
-     */
-    - (void)activateTerminal {
-        _upayTask = [[WSUpayTask alloc] init];
-        _upayTask.needsUserInterface = NO; // 启用无界面模式
-        _upayTask.devMode = YES; // 使用开发模式
-        [_upayTask activateTerminal:@"123456"
-                           vendorId:@"someid"
-                          vendorKey:@"somekey"
-                             finish:^(NSError *error) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if (error) {
-                    // 激活失败，展示激活失败结果
-                } else {
-                    // 激活成功，展示激活成功结果
-                }
-            });
-        }];
-    }
-    
-    @end
-
-### 3.2 激活
+### 3.1 激活
 
 激活操作提供了无界面和标准界面两种开发模式。当指定`needsUserInterface`为`YES`且`baseViewController`为当前的ViewController时，则启用标准界面模式；否则启用无界面模式。
 
 WSUpayTask实例的`activate`方法调用前，需要利用激活信息初始化方法指定设备的激活信息（`upayActivationInfo`）和回调处理block（`finish`）。
 
-`upayActivationInfo`的`code`属性是由收钱吧提供的设备激活码（可由商户在商户服务平台2.0上自行生成或由收钱吧运营代为生成），用于激活该设备作为收钱吧服务的终端。而`vendor_sn`和`vendor_key`是验证服务商身份的重要凭证，由开发者和服务商管理，请在应用内确保其安全性。`vendor_app_id`是为了在服务商开发了多款基于收钱吧SDK的应用产品时便于区分和管理。`client_sn`和`name`是为了便于服务商或商户对激活好的终端进行辨认。
+`upayActivationInfo`的`code`属性是由合码云提供的设备激活码，用于激活该设备作为合码云服务的终端。而`vendor_sn`和`vendor_key`是验证服务商身份的重要凭证，由开发者和服务商管理，请在应用内确保其安全性。`vendor_app_id`是为了在服务商开发了多款基于合码云SDK的应用产品时便于区分和管理。`client_sn`和`name`是为了便于服务商或商户对激活好的终端进行辨认。
 
 `finish`参数是处理激活结果的block。当激活成功时，SDK会回调block并传入`nil`；激活失败时，SDK会回调block并传入包含错误信息的NSError实例。若缺少`finish`，则`activate`方法不执行任何操作。
 
@@ -1162,7 +1117,7 @@ WSUpayActivationInfo的属性中有关支付操作的属性如下：
 
 支付操作提供了无界面和标准界面两种开发模式。当指定`needsUserInterface`为`YES`且`baseViewController`为当前的ViewController时，则启用标准界面模式；否则启用无界面模式。
 
-在准备支付请求时，对于WSUpayOrder实例的支付渠道（`payway`）属性，开发者可以选择不指定或赋值为`WSUpayPaywayUnknown`，收钱吧服务器会根据WSUpayOrder实例的`dynamic_id`属性自动判断支付渠道。
+在准备支付请求时，对于WSUpayOrder实例的支付渠道（`payway`）属性，开发者可以选择不指定或赋值为`WSUpayPaywayUnknown`，合码云服务器会根据WSUpayOrder实例的`dynamic_id`属性自动判断支付渠道。
 
 若开发者使用无界面开发模式，则由开发者负责开发扫描条码页面，并指定WSUpayOrder实例的支付条码（`dynamic_id`）属性，否则支付请求会直接返回参数错误。若开发者使用标准界面开发模式，则由SDK负责展示扫描条码页面并收集扫描到的条码值。
 
@@ -1280,7 +1235,7 @@ WSUpayOrder的属性中有关支付操作的属性如下：
 
 在退款时，对WSUpayOrder实例的收钱吧订单号（`sn`）和商户订单号（`client_sn`）属性处理方式如下：
 
-- 当开发者同时指定了两者时，退款以收钱吧订单号为准；
+- 当开发者同时指定了两者时，退款以合码云订单号为准；
 - 当仅指定两者任意其一时，按照指定的订单号为准；
 - 若都未指定，则在无界面模式下，退款操作直接返回参数校验错误，在标准界面模式下，SDK会展示输入订单号的控件。
 
@@ -1389,7 +1344,7 @@ WSUpayOrder的属性中有关退款操作的属性如下：
 
 若开发者使用无界面开发模式，则由开发者负责开发展示收款二维码页面。若开发者使用标准界面开发模式，则由SDK负责展示收款二维码页面。
 
-目前收钱吧预下单订单的有效期大约为 **100** 秒，若超时仍未支付，则收款二维码失效。
+目前合码云预下单订单的有效期大约为 **100** 秒，若超时仍未支付，则收款二维码失效。
 
 #### 预下单参数
 
@@ -1508,7 +1463,7 @@ WSUpayOrder的属性中有关预下单操作的属性如下：
 
 ### 3.6 查询
 
-查询操作仅支持无界面开发模式。开发者仅需传入WSUpayOrder实例，并指定其收钱吧订单号（`sn`）或商户订单号（`client_sn`）属性。若都未指定，则SDK直接返回参数错误。
+查询操作仅支持无界面开发模式。开发者仅需传入WSUpayOrder实例，并指定其合码云订单号（`sn`）或商户订单号（`client_sn`）属性。若都未指定，则SDK直接返回参数错误。
 
 #### 查询参数
 
@@ -1578,7 +1533,7 @@ WSUpayOrder的属性中有关查询操作的属性如下：
 
 撤单操作提供了无界面和标准界面两种开发模式。当指定`needsUserInterface`为`YES`且`baseViewController`为当前的ViewController时，则启用标准界面模式；否则启用无界面模式。
 
-在撤单时，对WSUpayOrder实例的收钱吧订单号（`sn`）和商户订单号（`client_sn`）属性处理方式如下：
+在撤单时，对WSUpayOrder实例的合码云订单号（`sn`）和商户订单号（`client_sn`）属性处理方式如下：
 
 - 当开发者同时指定了两者时，撤单以收钱吧订单号为准；
 - 当仅指定两者任意其一时，按照指定的订单号为准；
@@ -1664,11 +1619,11 @@ WSUpayOrder的属性中有关撤单操作的属性如下：
 
 ### 4.1 <a name="devMode"></a> 开发模式
 
-为了方便开发者进行调试，SDK提供了 **开发模式** 。开发模式下，设备端和服务器端都采用开发环境的数据和参数。这样可以避免开发者因开发调试而影响到正式环境的商户交易数据。因此，收钱吧建议开发者在开发调试和发布测试版本时，采用开发模式；在发布正式版本时，则采用非开发模式。
+为了方便开发者进行调试，SDK提供了 **开发模式** 。开发模式下，设备端和服务器端都采用开发环境的数据和参数。这样可以避免开发者因开发调试而影响到正式环境的商户交易数据。因此，合码云建议开发者在开发调试和发布测试版本时，采用开发模式；在发布正式版本时，则采用非开发模式。
 
 SDK在[WSUpayTask](#WSUpayTask)中提供了`devMode`属性。该属性决定当前操作是否使用开发模式。若在执行操作前，设置WSUpayTask的`devMode`属性为`YES`，则：
 
-- SDK将调用收钱吧开发环境服务器，所有交易数据保存在开发环境，与正式环境隔离；
+- SDK将调用合码云开发环境服务器，所有交易数据保存在开发环境，与正式环境隔离；
 - SDK将使用开发环境的终端配置。这意味着如果开发者在开发模式下成功激活某台设备后，切换到非开发模式下，该设备仍处于未激活状态。
 
 ### 4.2 <a name="noUI"></a> 无界面模式
@@ -1699,7 +1654,7 @@ SDK在操作过程中遇到任何异常时，会将错误信息通过回调方�
         <tr>
             <td>WSUpayTransactionErrorDomain</td>
             <td>-10200</td>
-            <td>收钱吧服务器成功处理，但支付渠道业务处理异常，请检查您的交易请求是否合法以及交易双方账户的有效性。</a></td>
+            <td>合码云服务器成功处理，但支付渠道业务处理异常，请检查您的交易请求是否合法以及交易双方账户的有效性。</a></td>
         </tr>
         <tr>
             <td>WSUpayTerminalErrorDomain</td>
@@ -1714,12 +1669,12 @@ SDK在操作过程中遇到任何异常时，会将错误信息通过回调方�
         <tr>
             <td>WSUpayServerErrorDomain</td>
             <td>-10300<br />-105xx</td>
-            <td>收钱吧服务器返回结果异常或服务器端处理异常。出现该错误时，操作最终结果未知。当收款或退款时遇到该错误，建议开发者提示用户联系收钱吧客服。</td>
+            <td>服务器返回结果异常或服务器端处理异常。出现该错误时，操作最终结果未知。当收款或退款时遇到该错误，建议开发者提示用户联系合码云客服。</td>
         </tr>
         <tr>
             <td>WSUpayUnknownErrorDomain</td>
             <td>-10500<br />-11000<br />或其他</td>
-            <td>未知错误。出现该错误时，操作最终结果未知。当收款或退款时遇到该错误，建议开发者提示用户联系收钱吧客服。调试时可检查<code>userInfo</code>属性确认错误原因。</td>
+            <td>未知错误。出现该错误时，操作最终结果未知。当收款或退款时遇到该错误，建议开发者提示用户联系合码云客服。调试时可检查<code>userInfo</code>属性确认错误原因。</td>
         </tr>
     </tbody>
 </table>
@@ -1745,52 +1700,4 @@ SDK在操作过程中遇到任何异常时，会将错误信息通过回调方�
 
 ## 6. <a name="Contact"></a> 联系我们
 
-如果您在使用SDK进行开发时遇到任何问题，请及时联系收钱吧。联系方式为：
-
-**技术支持：**<sdk@wosai-inc.com>
-
-**收钱吧运营&客服：**<shou@wosai-inc.com>
-
-## 7. <a name="ChangeLog"></a> 版本记录
-
-<table>
-    <thead style="font-weight: bold;">
-        <tr>
-            <td>版本</td>
-            <td style="width:100px">日期</td>
-            <td>说明</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>0.1.0</td>
-            <td>2016年1月27日</td>
-            <td>提交审阅</td>
-        </tr>
-        <tr>
-            <td>0.1.1</td>
-            <td>2016年1月29日</td>
-            <td>更新项目依赖；更新激活接口；增加撤单操作的开发文档、流程说明和开发指引；完善常见问题部分</td>
-        </tr>
-        <tr>
-            <td>0.1.2</td>
-            <td>2016年1月31日</td>
-            <td>WSUpayOrder的operator属性在支付与预下单操作时改为必填字段；WSUpayOrder的extended属性类型改为NSDictionary；更新相应开发指引</td>
-        </tr>
-        <tr>
-            <td>0.1.3</td>
-            <td>2016年2月1日</td>
-            <td>更新SDK版本为3.0.0，更新联系方式，正式发布</td>
-        </tr>
-        <tr>
-            <td>0.2.0</td>
-            <td>2016年9月20日</td>
-            <td>更新SDK版本为3.1.1。<ul><li>WSUpayPayway新增QQ钱包；</li><li>新增WSUpayActivitionInfo类；</li><li>WSUPayTask新增upayActivationInfo属性及对应的初始化方法；</li><li>WSUpayTask新增新版激活接口，废弃原有激活接口（原有激活接口仍可用，但不再支持标准界面模式）；</li><li>WSUpayTask新增获取设备编号、激活状态和SDK版本信息的接口；</li><li>WSUpayResult新增client_tsn属性；</li><li>WSUpayGeneralErrorCode新增WSUpayGeneralErrorCodeUnknownError（未知错误，-11000）；</li><li>所有交易的标准界面模式下，若遇到交易异常，提示错误信息后会自动退出当前界面；</li><li>预下单查询时间延长至4分钟；</li><li>修复支付网关返回特定错误时SDK崩溃的问题。</li></ul></td>
-        </tr>
-        <tr>
-            <td>0.2.1</td>
-            <td>2017年3月20日</td>
-            <td>更新SDK版本为3.1.3，优化服务器证书错误的判断逻辑。</td>
-        </tr>
-    </tbody>
-</table>
+如果您在使用SDK进行开发时遇到任何问题，请及时联系合码云技术支持。
