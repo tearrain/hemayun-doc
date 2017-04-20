@@ -2,7 +2,7 @@
 
 * [1.介绍](README.md)
 * [2.对接前准备](business.md)
-* [3.对接过程常见问题](api/Q&A-技术-Web API.md)
+* [3.对接过程常见问题](api/web-API-QA.md)
 * [4.Web API接入指南](api/README.md)
   * [4.1 对接流程文档](api/apiflow.md)
   * [4.2 签名机制](api/sign.md)
@@ -28,7 +28,7 @@
   * [7.2 业务流程](sdk/business.md)
   * [7.3 Windows SDK](sdk/73-windows-sdk.md)
     * [7.3.1 Windows SDK对接文档](sdk/windows.md)
-    * [7.3.2 Windows SDK 常见问题](sdk/Q&A-技术-SDK API.md)
+    * [7.3.2 Windows SDK 常见问题](sdk/windows-QA.md)
   * [7.4 iOS SDK对接文档](sdk/ios.md)
   * [7.5 Android SDK对接文档](sdk/android.md)
 
