@@ -14,7 +14,7 @@
 
 ## 网关地址
 
-[https://m.wosai.cn/qr/gateway](https://m.wosai.cn/qr/gateway)
+[https://qr.hemayun.com/qr/gateway](https://m.wosai.cn/qr/gateway)
 
 ## 请求方式
 
@@ -24,7 +24,7 @@ GET
 
 | 参数 | 参数名称 | 类型 | 是否必填 | 描述 | 范例 |
 | --- | --- | --- | --- | --- | --- |
-| terminal\_sn | 收钱吧终端ID | String\(32\) | Y | 合码云终端ID | "23420593829" |
+| terminal\_sn | 合码云终端ID | String\(32\) | Y | 合码云终端ID | "23420593829" |
 | client\_sn | 商户系统订单号 | String\(32\) | Y | 必须在商户系统内唯一；且长度不超过32字节 | "18348290098298292838" |
 | total\_amount | 交易总金额 | String\(10\) | Y | 以分为单位,不超过10位纯数字字符串,超过1亿元的收款请使用银行转账 | "1000" |
 | subject | 交易概述 | String\(64\) | Y | 本次交易的概述 | "pizza" |
@@ -48,8 +48,8 @@ GET
 | is\_success | 成功标识 | String\(1\) | Y | 表示接口调用是否成功，并不表明业务处理结果。 | T |
 | error\_code | 错误码 | String | N | 仅 is\_success 为 F 时出现 | 见附录 《错误码》 |
 | error\_message | 错误描述 | String | N | 仅 is\_success 为 F 时出现 | 见附录 《错误码》 |
-| terminal\_sn | 收钱吧终端ID | String\(32\) | Y | 收钱吧终端ID | "23420593829" |
-| sn | 收钱吧唯一订单号 | String\(16\) | Y | 收钱吧系统内部唯一订单号 | 7892259488292938 |
+| terminal\_sn | 合码云终端ID | String\(32\) | Y | 合码云终端ID | "23420593829" |
+| sn | 合码云唯一订单号 | String\(16\) | Y | 合码云系统内部唯一订单号 | 7892259488292938 |
 | trade\_no | 支付服务商订单号 | String\(64\) | Y | 支付通道交易凭证号 | 2013112011001004330000121536 |
 | client\_sn | 商户系统订单号 | String\(32\) | Y | 必须在商户系统内唯一；且长度不超过32字节 | "18348290098298292838" |
 | status | 支付状态 | String | N | 标志支付是否成功 | "SUCCESS" |
