@@ -20,7 +20,7 @@ operator	|门店操作员|	String(32)|	Y	|发起本次交易的操作员|	"Obama
 description	|商品详情	|String(256)|N|对商品或本次交易的描述|
 longitude|	经度	|String|	N	|经纬度必须同时出现|
 latitude	|纬度	|String	|N|经纬度必须同时出现|
-extended	|扩展参数集合	|String(256)|	N|	收钱吧与特定第三方单独约定的参数集合,json格式，最多支持24个字段，每个字段key长度不超过64字节，value长度不超过256字节 | { "goods_tag": "beijing"}
+extended	|扩展参数集合	|String(256)|	N|	合码云与特定第三方单独约定的参数集合,json格式，最多支持24个字段，每个字段key长度不超过64字节，value长度不超过256字节 | { "goods_tag": "beijing"}
 reflect|	反射参数|	String(64)|	N|任何调用者希望原样返回的信息 | { "tips" : "100"}
 notify_url|回调|String(128)|N| 支付回调的地址|例如：www.baidu.com 如果支付成功通知时间间隔为1s,5s,30s,600s
 
@@ -30,7 +30,7 @@ notify_url|回调|String(128)|N| 支付回调的地址|例如：www.baidu.com �
 
 参数 | 参数名称 | 类型 | 必填|描述 |范例
 --------- | ------ | ----- | -------|---|----
-sn|	合码云唯一订单号|	String(16)|	Y|	收钱吧系统内部唯一订单号	|7892259488292938
+sn|	合码云唯一订单号|	String(16)|	Y|	合码云系统内部唯一订单号	|7892259488292938
 client_sn|	商户订单号|	String(64)|	Y	|商户系统订单号|	7654321132
 trade_no	|支付服务商订单号|	String(64)|	Y	|支付通道交易凭证号|	2013112011001004330000121536
 status	|流水状态	|String(32)|	Y	|本次操作产生的流水的状态|CREATED
