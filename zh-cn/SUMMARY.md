@@ -31,7 +31,4 @@
     * [7.3.2 Windows SDK 常见问题](sdk/Q&A-技术-SDK API.md)
   * [7.4 iOS SDK对接文档](sdk/ios.md)
   * [7.5 Android SDK对接文档](sdk/android.md)
-* [8.Web Proxy接入指南](proxy/README.md)
-  * [8.1 映射代理](proxy/webproxy-auto.md)
-  * [8.2 非映射代理](proxy/webproxy.md)
 
