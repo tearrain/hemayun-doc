@@ -14,7 +14,7 @@
 
 ## 网关地址
 
-https://qr.hemayun.com/qr/gateway
+https://qr.hemayun.com/wapapi
 
 ## 请求方式
 
