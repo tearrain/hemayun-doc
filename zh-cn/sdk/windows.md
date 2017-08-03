@@ -57,7 +57,7 @@ UpaySDK 主要的业务功能有如下五个:
 ### 4.1 资源说明
 #### 4.1.1 内容
 UpaySDK 包含一个“Upay.dll”动态库文件和两个配置文件,如下图:
-![GitHub set up](http://ww2.sinaimg.cn/mw690/839dbc19gw1f180uytbjvj21hw09gjt2.jpg)
+![GitHub set up](http://wosai-images.oss-cn-hangzhou.aliyuncs.com/UpaySDK.png)
 
 #### 4.1.2 部署
 
@@ -105,7 +105,7 @@ UpaySDK 的使用步骤,一般包括:
 协议|规则
 ---|---
 输入参数|按顺序以&符号连接，<br>例: 参数 1&参数 2&...&参数 n ，参数为空则以&&形式
-输出参数|**激活、支付、预下单、退款、撤单接口**:返回状态 <font color="red">**.**</font>返回信息(&符号连接)<br>**查询接口(query)**:返回状态<font color="red">**:**</font>返回信息(json 格式)<br>**查询接口(queryEx)**:返回状态<font color="red">**:**</font>返回信息(&符号连接)<br>例：<br>Pay Success.参数 1&参数 2&...&参数 n<br>Query Result:{param1=”1”, param1=”2”}<br>**扩展接口**:单一返回值
+输出参数|**业务接口**:返回状态 <font color="red">**.**</font>返回信息(&符号连接) 或者 返回状态 <font color="red">**.**</font>返回信息(json格式)<br>例：<br>Pay Success.参数 1&参数 2&...&参数 n<br>Query Result:{param1=”1”, param1=”2”}<br>**扩展接口**:单一返回值
 字符编码|统一采用 UTF-8 字符编码
 参数特殊字符及转义|所有的参数,不能含有特殊字符,除 extended 参数外的所有参数中包含”字符的,需要使用\”转义代替
 输入参数必要性|M-必填,<br>C-满足条件则必填,<br>O-选填,<br>P-必须占位可传空值
@@ -240,9 +240,6 @@ const char* __stdcall activate(const char* params)|无|Activate Success、Activa
 服务商序列号|String|M|由合码云分配的服务商序列号|--
 服务商密钥|String|M|由合码云分配的服务商密钥|--
 终端激活码|String(12)|C|由合码云分配的终端激活码，activate必传|411451574136
-appid|String|M|appid，从服务商平台获取|--
-终端号|String|O|第三方终端号，必须保证在app id下唯一|--
-终端名|String|O|终端名|--
 
 
 * 4.4.1.1.3 输出参数
@@ -260,6 +257,8 @@ appid|String|M|appid，从服务商平台获取|--
 
 **4.4.1.2 支付**
 
+该接口负责向合码云发送支付请求并返回支付结果
+
 * 4.4.1.2.1 函数原型
 
 函数原型|有无UI|返回状态
@@ -272,14 +271,14 @@ const char* __stdcall pay(const char* params)|无|Pay Success、Pay Failure
 名称|类型|必要性|参数说明|示例
 ---|---|---|---|---
 商户订单号|String(32)|M|<font color="red">商户系统订单号，必须在商户系统内唯一，不超过32字符|201660121175530001
-商品名称|String(64)|M|本次交易的简要介绍|测试商品
+商品名称|String(32)|M|本次交易的简要介绍|测试商品
 操作员|String(32)|M|发起本次交易的操作员|00
 商品描述|String(256)|P|对商品或本次交易的详细描述|雪碧 300ml
 支付方式|String(1)|P|见参数规定,若传空值,接口会自动根据付款码识别|1:支付宝<br/>3:微信<br/>4:百度钱包<br/>5:京东钱包
 交易金额|String(10)|M|以分为单位,不超过 10 位纯数字字符串|1000
 付款码|String(32)|P|消费者用于付款的条码或二维码内容, 使用 UI 时可以传空值|130818341921441147
 反射参数|String|P|商户系统希望合码云接口服务原样返回的字符内容|--
-扩展参数|JSON Map|P|商户系统与合码云系统约定的参数格式|--
+扩展参数|String|P|商户系统与合码云系统约定的参数格式|--
 
 **商户系统订单号必须在商户系统内唯一，支付失败订单的二次支付请求，请创建新的商户订单号**
 
@@ -292,6 +291,7 @@ const char* __stdcall pay(const char* params)|无|Pay Success、Pay Failure
 商户订单号|String(32)|M|商户系统内部的唯一订单标识|20160122111520
 支付方式|String(1)|M|见参数规定,返回状态为 Failure 时可能 为空值|1
 支付平台交易凭证|String(64)|C|返回状态 Success 时存在|10054810162016012 22834933179
+支付平台交易时间|String(32)|C|返回状态Success 时存在，毫秒为单位的Unix 时间戳|1500949287000
 错误码|String|C|返回状态 Failure 时存在,详细参见错误 列表|CLIENT_SN_CONFLICT
 错误码描述|String|C|返回状态 Failure 时存在,详细参见错误 列表|client_sn 20160122111519 在系统中已经存在
 反射参数|String|P|商户系统上报的字符内容|--
@@ -317,16 +317,14 @@ const char* __stdcall preCreate (const char* params)|无|PreCreate Success、 Pr
 名称|类型|必要性|参数说明|示例
 ---|---|---|---|---
 商户订单号|String(32)|M|<font color="red">商户系统订单号，必须在商户系统内唯一，不超过32字符|201660121175530001
-商品名称|String(64)|M|本次交易的简要介绍测试商品
+商品名称|String(32)|M|本次交易的简要介绍测试商品
 操作员|String(32)|M|发起本次交易的操作员|00
 商品描述|String(256)|P|对商品或本次交易的详细描述|雪碧 300ml
 支付方式|String(1)|M|本次交易使用的支付通道,见参数规定|1
 交易金额|String(10)|M|以分为单位,不超过 10 位纯数字字符串|1000
 保存路径|String(32)|C|用于保存二维码图片,preCreate时必传|C:\prcode\
 反射参数|String|P|商户系统希望合码云接口服务原样返回的字符内容|--
-扩展参数|JSON Map|P|商户系统与合码云系统约定的参数格式|--
-
-**商户系统订单号必须在商户系统内唯一，支付失败订单的二次预下单请求，请创建新的商户订单号**
+扩展参数|String|P|商户系统与合码云系统约定的参数格式|--
 
 * 4.4.1.3.3输出参数
 
@@ -347,10 +345,10 @@ const char* __stdcall preCreate (const char* params)|无|PreCreate Success、 Pr
 
 ![GitHub set up](http://wosai-images.oss-cn-hangzhou.aliyuncs.com/test%2FlALOCxUHOs0Cnc0CYA_608_669.png)
 
-* 4.4.1.3.5preCreate业务流程
-![GitHub set up](http://wosai-images.oss-cn-hangzhou.aliyuncs.com/test%2F%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-14%20%E4%B8%8B%E5%8D%884.17.43.png)
 
 **4.4.1.4退款**
+
+该接口负责向收钱吧发送退款请求并返回退款结果，支持对一笔订单进行多次退款
 
 * 4.4.1.4.1 函数原型
 
@@ -367,7 +365,7 @@ const char* __stdcall refund(const char* params)|无|Refund Success、 Refund Fa
 ---|---|---|---|---
 合码云订单号|String(32)|C|合码云系统内的唯一订单标识;<br>refundUIWithSN 时必须;<br>refund 时必要性为 P,与商户订单号必须有一项不为空,<br>若同时不为空,则合码云订单号优先级高|7894259244017207
 商户订单号|String(32)|C|商户系统内的唯一订单标识;<br>refundUIWithClientSN 时必须;<br>refund时必要性为P,与合码云订单号必须有一项不为空,<br>若同时不为空,则合码云订单号优先级高|20160122111520
-退款序列号|String(32)|M|商户系统退款的唯一标识，不超过30个字符|20160122111521
+退款序列号|String(32)|M|商户系统退款的唯一标识|20160122111521
 操作员|String(32)|M|发起本次退款的操作员|00
 退款金额|String(10)|M|以分为单位,不超过 10 位纯数字字符串|1000
 反射参数|String|P|商户系统希望合码云接口服务原样返回的字符内容|--
@@ -380,6 +378,7 @@ const char* __stdcall refund(const char* params)|无|Refund Success、 Refund Fa
 合码云订单号|String(32)|M|合码云产生当前订单的唯一标识,若未 传入则返回空值|7894259244017207
 商户订单号|String(32)|M|商户系统内部的唯一订单标识,若未传 入则返回空值|20160122111520
 支付通道交易凭证|String(64)|C|返回状态 Success 时存在|10054810162016012 22834933179
+支付通道交易时间|String(32)|C|返回状态Success 时存在，毫秒为单位的Unix 时间戳|1500949287000
 错误码|String|C|返回状态 Failure 时存在,详细参见错误列表|REFUNDABLE_AMOU NT_NOT_ENOUGH
 错误码描述|String|C|返回状态 Failure 时存在,详细参见错误列表|退款金额错误,可退金额不足
 反射参数|String|P|商户系统上报的字符内容|--
@@ -397,7 +396,6 @@ const char* __stdcall refund(const char* params)|无|Refund Success、 Refund Fa
 函数原型|有无UI|返回状态
 ---|---|---
 const char* __stdcall query (const char* params)|无|Query Result、Query Failure
-const char* __stdcall queryEx (const char* params)|无|Query Result、Query Failure
 
 * 4.4.1.5.2 输入参数
 
@@ -446,28 +444,10 @@ subject|String(32)|C|本次交易的简要介绍|测试商品
 operator|String(64)|C|操作员|00
 reflect|String|C|商户系统随订单提交的反射参数|--
 
-* 4.4.1.5.3.2 queryEx 接口输出参数
-
-名称|类型|必要性|参数说明|示例
----|---|---|---|---
-返回状态|String|M|标识本次请求成功还是失败,见参数规定|Query Result
-**<font color="red">当返回状态为 Query Failure 时会以&连接形式返回以下参数</font>**|-|-|-|-
-合码云订单号|String(32)|M|合码云产生当前订单的唯一标识,若未传入则返回空值|7894259244017207
-商户订单号String(32)||M|商户系统内部的唯一订单标识,若未传入则返回空值|20160122111520
-错误码|String|M|详细参见错误列表|x0001
-错误码描述|String|M|详细参见错误列表|加载服务失败
-**<font color="red"> 当返回状态为 Query Result 时会以&连接形式返回以下参数</font>**|-|-|-|-
-订单状态|String(32)|M|见参数规定|REFUNDED
-合码云订单号|String(32)|M|合码云产生当前订单的唯一标识|7894259244017207
-商户订单号|String(32)|M|商户系统内部的唯一订单标识|20160122111520
-支付方式|String(1)|M|见参数规定|1
-支付平台交易凭证|String(64)|C|见参数规定|200610101620151209 0096528672
-反射参数|String|C|支付时商户系统随订单提交的反射参数|--
-
 
 * 4.4.1.5.4 使用示意
 
-![GitHub set up](http://wosai-images.oss-cn-hangzhou.aliyuncs.com/test%2FlALOCxWgK80CW80BHg_286_603.png)
+![GitHub set up](http://wosai-images.oss-cn-hangzhou.aliyuncs.com/Query.png)
 
 **4.4.1.6撤单**
 
@@ -649,15 +629,8 @@ NA
 
 参数名|参数解释|参数值|示例
 ---|---|---|---
-APPURL|业务的请求地址,默认https://api.hemayun.com|<br>正式环境:RTM;<br>自定义:http://xxxxxxx/|AppURL:RTM
-EnableLog|是否开启SDK日志，默认开启|开启:1,不开启:0|EnableLog:1
-Proxy|代理地址||Proxy:http-proxy-sha.corporate.example.com
-ProxyPort|代理端口||ProxyPort:80
-
-**注:如果终端不能直接与外网通信,增加代理设置就是在KeyParams文件中增加Proxy和ProxyPort**
-
-**建议开启日志，方便调试**
-
+APPURL|业务的请求地址,默认测试地址|<br>测试环境:RC;<br>正式环境:RTM;<br>自定义:http://xxxxxxx/|AppURL:RC
+EnableLog|是否开启SDK日志，默认不开启|开启:1,不开启:0|EnableLog:1
 
 
 ####4.5.2 KeySettings
@@ -735,7 +708,12 @@ UNEXPECTED_PROVIDER_ERROR|不认识的支付通道|合码云不支持的支付�
  
 开发语言|下载地址
 ----|----
-C++| （https://github.com/WoSai/shouqianba-winsdk2.0-demo)
+C++|
+Java|
+C#|
+Vb6|
+PB9|
+PB12|
 
 
 
