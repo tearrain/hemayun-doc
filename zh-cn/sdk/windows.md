@@ -488,7 +488,7 @@ const char* __stdcall revoke(const char* params)|无|Revoke Success、 Revoke Fa
 
 ![GitHub set up](http://ww3.sinaimg.cn/large/61df8f13gw1f12p1g8oaxj20g80je3zw.jpg)
 
-####4.4.2 扩展接口
+#### 4.4.2 扩展接口
 **4.4.2.1获取二维码内容**
 
 该接口负责返回二维码的实际内容,方便调用者进行自己的业务处理,
